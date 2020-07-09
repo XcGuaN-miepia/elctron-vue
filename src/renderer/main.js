@@ -1,13 +1,18 @@
 import Vue from 'vue'
-import axios from 'axios'
 
 import App from './App'
 import router from './router'
 import store from './store'
+import yjui from 'yjui'
 
 if (!process.env.IS_WEB) Vue.use(require('vue-electron'))
-Vue.http = Vue.prototype.$http = axios
 Vue.config.productionTip = false
+
+// 注册yjui组件
+Vue.use(yjui, {
+  size: 'small',
+  zIndex: 2000
+})
 
 /* eslint-disable no-new */
 new Vue({

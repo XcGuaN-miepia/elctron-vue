@@ -30,17 +30,20 @@
 </template>
 
 <script>
-  import SystemInformation from './LandingPage/SystemInformation'
+import SystemInformation from './LandingPage/SystemInformation'
 
-  export default {
-    name: 'landing-page',
-    components: { SystemInformation },
-    methods: {
-      open (link) {
-        this.$electron.shell.openExternal(link)
-      }
+export default {
+  name: 'landing-page',
+  components: { SystemInformation },
+  methods: {
+    open (link) {
+      this.$electron.shell.openExternal(link)
     }
+  },
+  mounted () {
+    console.log(this.$tools)
   }
+}
 </script>
 
 <style>

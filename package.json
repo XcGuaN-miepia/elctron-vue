@@ -58,7 +58,8 @@
     "vue-electron": "^1.0.6",
     "vue-router": "^3.0.1",
     "vuex": "^3.0.1",
-    "vuex-electron": "^1.0.0"
+    "vuex-electron": "^1.0.0",
+    "yjui": "http://maven.dev.norincogroup-ebuy.com/repository/npm-group/yjui/-/yjui-2.2.5.tgz"
   },
   "devDependencies": {
     "ajv": "^6.5.0",

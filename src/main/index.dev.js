@@ -13,6 +13,7 @@ require('electron-debug')({ showDevTools: true })
 
 // Install `vue-devtools`
 require('electron').app.on('ready', () => {
+  // WARNING: 官方写的没有用
   // let installExtension = require('electron-devtools-installer')
   // installExtension.default(installExtension.VUEJS_DEVTOOLS)
   //   .then((name) => console.log(`Added Extension:  ${name}`))
