@@ -4,6 +4,7 @@ import App from './App'
 import router from './router'
 import store from './store'
 import yjui from 'yjui'
+import fetch from '@/common/fetch'
 
 if (!process.env.IS_WEB) Vue.use(require('vue-electron'))
 Vue.config.productionTip = false
@@ -25,6 +26,10 @@ Vue.config.warnHandler = function (msg, vm, trace) {
   // eslint-disable-next-line no-console
   console.warn(msg)
 }
+
+// 注册请求方法
+Vue.prototype.$fetch = fetch
+
 /* eslint-disable no-new */
 new Vue({
   components: { App },

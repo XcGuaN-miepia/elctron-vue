@@ -13,8 +13,8 @@ import {
   Loading,
   Message
 } from 'yjui'
-import utils from './utils.js'
-import api from '@/api'
+// import utils from './utils.js'
+// import api from '@/api'
 
 const env = require('@/config')
 
@@ -24,18 +24,18 @@ let isRefreshing = true
 // Token失效的请求集合
 let subscribers = []
 
-/**
- * description: 执行token失效产生的请求
- *
- * created by hezq on 2020-04-16
- *
- */
-function onAccessTokenFetched () {
-  subscribers.forEach((callback) => {
-    callback()
-  })
-  subscribers = []
-}
+// /**
+//  * description: 执行token失效产生的请求
+//  *
+//  * created by hezq on 2020-04-16
+//  *
+//  */
+// function onAccessTokenFetched () {
+//   subscribers.forEach((callback) => {
+//     callback()
+//   })
+//   subscribers = []
+// }
 
 /**
  * description: token失效接口，加入队列
@@ -102,7 +102,7 @@ function doResponse (resolve, reject, response, params) {
         })
         return retryOriginalRequest
       } else {
-        utils.loginout()
+        // utils.loginout()
       }
     } else if (code === 403) {
       // 处理403错误，访问无权限
@@ -126,39 +126,39 @@ function doResponse (resolve, reject, response, params) {
  *
  */
 function refreshToken () {
-  // 获取token
-  let accessToken = Cookies.get(`${env.config.DOMAIN_URL}${env.config.WEB_APP_KEY}.access_token`, {
-    domain: env.config.DOMAIN
-  }) || tools.store.getLS(`${env.config.DOMAIN_URL}${env.config.WEB_APP_KEY}.access_token`)
+  // // 获取token
+  // let accessToken = Cookies.get(`${env.config.DOMAIN_URL}${env.config.WEB_APP_KEY}.access_token`, {
+  //   domain: env.config.DOMAIN
+  // }) || tools.store.getLS(`${env.config.DOMAIN_URL}${env.config.WEB_APP_KEY}.access_token`)
 
-  let refreshToken = Cookies.get(`${env.config.DOMAIN_URL}${env.config.WEB_APP_KEY}.refresh_token`, {
-    domain: env.config.DOMAIN
-  })
+  // let refreshToken = Cookies.get(`${env.config.DOMAIN_URL}${env.config.WEB_APP_KEY}.refresh_token`, {
+  //   domain: env.config.DOMAIN
+  // })
 
-  axios.request({
-    url: api.common.refreshToken + refreshToken,
-    method: 'put',
-    headers: {
-      Authorization: accessToken
-    },
-    data: {
-      refresh_token: refreshToken
-    }
-  }).then((res) => {
-    if (res.data && res.data.code === 200) {
-      utils.refresh(res.data.data)
-      onAccessTokenFetched()
-      isRefreshing = true
-    } else {
-      subscribers = []
-      isRefreshing = true
-      utils.loginout()
-    }
-  }).catch(() => {
-    subscribers = []
-    isRefreshing = true
-    utils.loginout()
-  })
+  // axios.request({
+  //   url: api.common.refreshToken + refreshToken,
+  //   method: 'put',
+  //   headers: {
+  //     Authorization: accessToken
+  //   },
+  //   data: {
+  //     refresh_token: refreshToken
+  //   }
+  // }).then((res) => {
+  //   if (res.data && res.data.code === 200) {
+  //     // utils.refresh(res.data.data)
+  //     onAccessTokenFetched()
+  //     isRefreshing = true
+  //   } else {
+  //     subscribers = []
+  //     isRefreshing = true
+  //     // utils.loginout()
+  //   }
+  // }).catch(() => {
+  //   subscribers = []
+  //   isRefreshing = true
+  //   // utils.loginout()
+  // })
 }
 
 /**
