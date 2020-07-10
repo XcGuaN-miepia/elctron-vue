@@ -14,6 +14,17 @@ Vue.use(yjui, {
   zIndex: 2000
 })
 
+// 全局Vue报错捕获
+Vue.config.errorHandler = function (err, vm, info) {
+  // eslint-disable-next-line no-console
+  console.error(err)
+}
+
+// 全局Vue警告捕获，只适用于开发环境
+Vue.config.warnHandler = function (msg, vm, trace) {
+  // eslint-disable-next-line no-console
+  console.warn(msg)
+}
 /* eslint-disable no-new */
 new Vue({
   components: { App },
