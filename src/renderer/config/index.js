@@ -54,5 +54,5 @@ config.DOMAIN = '$$_DOMAIN_$$'
 config.API_MOCK = '$$_API_MOCK_$$'
 
 module.exports = {
-	config: config
+  config: config
 }
