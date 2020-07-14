@@ -41,7 +41,13 @@ export default {
     }
   },
   mounted () {
-    console.log(this.$tools)
+    // this.$db.dbInsert({test: '123'}).then(res => {
+    //   console.log(res)
+    // })
+
+    this.$db.dbFind({}).then(res => {
+      console.log(res)
+    })
   }
 }
 </script>
