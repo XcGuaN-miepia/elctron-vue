@@ -7,7 +7,7 @@
     // 选择路径自定义,可以导入路径的时候只写api或者libs，但是需要在webpack同步改
     // 免得webpack找不到路径
     "paths": {
-      "@/*" : ["src/render/*"]
+      "@/*" : ["src/renderer/*"]
     }
   }
 }
