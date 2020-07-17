@@ -2,7 +2,6 @@ import Nedb from 'nedb'
 import path from 'path'
 import { remote } from 'electron'
 
-// TODO:文件名称修改
 export default class Datastore extends Nedb {
   /**
    * description: 构造函数
